@@ -132,7 +132,7 @@ class Song():
 			and Song object.
 
 		"""
-		
+
 		if not self.lyrics:
 			Song.lyrics_errors_count += 1
 			print('Failed:', self.error)
@@ -146,7 +146,7 @@ class Song():
 
 					album_str = 'Album - Unkown'
 					if self.album:
-						album_str = 'Album - ' + self.album			
+						album_str = 'Album - ' + self.album
 					f.write(album_str)
 					f.write('\n\n')
 
@@ -184,13 +184,13 @@ class Song():
 
 				if self.format == 'm4a' or self.format == 'mp4':
 					# lyrics_key = '\xa9lyr'
-					
+
 					if sys.version_info[0] < 3:
 						lyrics_key = lyrics_key.encode('latin-1')
 					self.tag[lyrics_key] = self.lyrics
 
 				# Both flac and ogg/oga(Vorbis & FLAC), are being read/write as Vorbis Comments.
-				# Vorbis Comments don't have a standard 'lyrics' tag. The 'LYRICS' tag is 
+				# Vorbis Comments don't have a standard 'lyrics' tag. The 'LYRICS' tag is
 				# most common non-standard tag used for lyrics.
 				if self.format == 'flac' or self.format == 'ogg' or self.format == 'oga':
 					self.tag[lyrics_key] = self.lyrics
@@ -210,7 +210,7 @@ class Song():
 				self.error = err_str
 				Song.lyrics_errors_count += 1
 				print('Failed:', err_str)
-				
+
 			except IOError as e:
 				err_str = 'Cannot save lyrics to tag. The file is opened or in use.'
 				self.error = err_str
@@ -287,7 +287,7 @@ class Song():
 					tag = 'Failed'
 		else:
 			tag = 'Ignored'
-		
+
 		# avoid exceptions raised for concatinating Unicode and None types
 		if self.artist and self.title:
 			log['song'] = self.artist + ' - ' + self.title
@@ -309,7 +309,7 @@ class Song():
 			log_date = time.strftime("%H:%M:%S  %d/%m/%y")
 			log_file_name = 'log.txt'
 			with open(os.path.join(Config.lyrics_dir, log_file_name), 'w', encoding='utf-8') as f:
-				
+
 				f.write('\t\t\t\tlyrico\n\n')
 
 				f.write('Log Date ' + log_date + '\n')
@@ -372,7 +372,7 @@ class Song():
 
 				# Add credits
 				f.write(table_border)
-				
+
 				f.write("'lyrico' has been built and is maintained by Abhimanyu Pathania.")
 				f.write("\n\n")
 
@@ -391,5 +391,3 @@ class Song():
 		except IOError as e:
 			print('Unable to build log.')
 			print('"lyrics_dir" does not exist. Please set "lyrics_dir" to a folder which exists.')
-
-

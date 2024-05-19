@@ -29,7 +29,7 @@ Use the standard ``pip`` install::
 This will also install the dependencies. Hence, it is recommended to install ``lyrico`` on a separate `virtual environment <https://pypi.python.org/pypi/virtualenv>`_.
 
 You can test if ``lyrico`` was installed correctly by running the 'lyrico' command, which now should be available::
-    
+
     lyrico
 
 This would give the following output::
@@ -82,19 +82,19 @@ Before running ``lyrico`` you must set these using the ``set`` command. Values m
 This is how an example first-run would look like on Windows.
 
 1. Set the ``source_dir``::
-  
+
     lyrico set source_dir D:\test\Music
 
    This logs the following message::
-       
+
        source_dir updated.
        lyrico will scan the following folder for audio files:
            D:\test\Music
-   
+
    When setting ``source_dir``, the directory must exist beforehand. ``lyrico`` will **not create** the ``source_dir`` for you.
 
 2. Set the ``lyrics_dir``::
-    
+
     lyrico set lyrics_dir D:\test\Lyrics
 
    This logs the following in command prompt::
@@ -123,13 +123,13 @@ Basic settings like ``source_dir`` and ``lyrics_dir`` can be repeatedly changed 
 - ``save_to_file`` - When enabled, ``lyrico`` will save the lyrics downloaded to a text file and put it in the ``lyrics_dir``. The naming convention of file is as follows:
 
    [artist name] - [title].txt
-   
+
   where  [artist name] and [title] are extracted from the song's metadata. It either of this is not found, lyrics won't be downloaded and you will see that in the final ``log.txt``. This naming convention in the current version cannot be changed.
 
   **enabled by default**
 
 - ``save_to_tag`` - When enabled, ``lyrico`` will embed the lyrics downloaded into song tags. ``lyrico`` uses the standard lyrics tags for different formats. This means, as long as your music player can read standard lyrics tags from the song's metadata, it should display them.
-  
+
   **disabled by default**
 
 - ``overwrite`` - When enabled, ``lyrico`` will always download the lyrics for a song ignoring they might already be present in the lyrics tag or in the ``lyrics_dir`` as a text file. After the download, it overwrites any existing lyrics in the tag or the text file.
@@ -161,7 +161,7 @@ This gives following message in command prompt::
 
 - *Viewing current settings* - To view current settings use the following command::
 
-   lyrico --settings 
+   lyrico --settings
 
 - *Help* - You can always view all the commands by asking for the help screen::
 
@@ -175,7 +175,7 @@ This gives following message in command prompt::
 
     lyrico set source_dir full_path_to_source_dir
     lyrico
-  
+
   However this won't work for the very first run. When running ``lyrico`` for the first time after installation, the ``source_dir`` must be set explicitly using the ``set`` command.
 
 Lyrics Sources
@@ -244,7 +244,7 @@ Here are somethings that ``lyrico`` does well:
 
   Even if you don't use foobar2000 or your music player cannot read lyrics from text files like that, you can always embed lyrics into tags which should work with any decent music player including **iTunes**.
 
-- **log.txt** - ``log.txt`` created at end of every ``lyrico`` run is nice way to see what have you fetched. It show list of every song present in ``source_dir`` along with status of download or errors that happened. 
+- **log.txt** - ``log.txt`` created at end of every ``lyrico`` run is nice way to see what have you fetched. It show list of every song present in ``source_dir`` along with status of download or errors that happened.
 
 ``lyrico`` gotchas
 ====================
@@ -265,7 +265,7 @@ Here are few points you should know before using ``lyrico``:
 
   - ABC(acoustic)
   - ABC(live version)
-  
+
   or an artist like:
 
   - XYZ(feat. Blah)

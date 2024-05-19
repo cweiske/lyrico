@@ -17,13 +17,13 @@ class BadConfigError(Exception):
 	def __init__(self, errno, value):
 		self.value = value
 		self.errno = errno
-	
+
 	def __str__(self):
 		return repr(self.value)
 
 
 def get_config_path():
-	
+
 	"""
 		Gets the absolute path of dir containing script running the function.
 		Uses that to get the path of config file, since it is located in same dir.

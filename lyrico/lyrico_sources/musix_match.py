@@ -3,7 +3,7 @@
 
 """
 	This module downloads lyrics from musixmatch. The URL structure is:
-	
+
 	https://www.musixmatch.com/lyrics/<artist>/<title>
 
 	musixmatch uses dashes, '-', for spaces and removes every other non-alphanumeric characters.
@@ -36,11 +36,11 @@ request_headers = get_lyrico_headers()
 
 
 def download_from_musix_match(song):
-	
+
 	"""
 		Takes reference to the song object as input and
 		adds lyrics to self.lyrics or add error string to self.error
-		property of the song object. 
+		property of the song object.
 	"""
 
 
@@ -57,8 +57,8 @@ def download_from_musix_match(song):
 	regex_non_alphanum = re.compile(r'[^\w\s\-]*', re.UNICODE)
 	artist = regex_non_alphanum.sub('', artist)
 	title = regex_non_alphanum.sub('', title)
-	
-	# Replace spaces with dashes to imporve URL logging. 
+
+	# Replace spaces with dashes to imporve URL logging.
 	regex_spaces = re.compile(r'[\s]+', re.UNICODE)
 	artist = regex_spaces.sub('-', artist)
 	title = regex_spaces.sub('-', title)
@@ -82,8 +82,8 @@ def download_from_musix_match(song):
 	except HTTPError as e:
 		print(e)
 		song.error = 'Lyrics not found. Check artist or title name.'
-	
-	# No exceptions raised and the HTML for lyrics page was fetched		
+
+	# No exceptions raised and the HTML for lyrics page was fetched
 	else:
 		soup = BeautifulSoup(res.text, 'html.parser')
 

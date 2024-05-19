@@ -23,7 +23,7 @@ from .helper import get_config_path
 from .helper import BadConfigError
 
 # Maintian a dict of lyrico actions to check target on update_lyrico_actions()
-# Also save the corresponding section in 
+# Also save the corresponding section in
 
 LYRICO_ACTIONS = {
 	'save_to_file': 'actions',
@@ -36,7 +36,7 @@ LYRICO_ACTIONS = {
 	'az_lyrics': 'sources',
 }
 
-# Used to print commandline logging for enable/disable sources 
+# Used to print commandline logging for enable/disable sources
 SOURCE_STR_MAP = {
 	'lyric_wikia' : 'Lyric Wikia',
 	'musix_match': 'musiXmatch',
@@ -45,16 +45,16 @@ SOURCE_STR_MAP = {
 }
 
 class Config():
-	
+
 	"""
 		Class wrapper build around user settings loaded from
 		config.ini
 
 		All setting are stored are class variables and all methods are
-		static methods. 
+		static methods.
 
 		A Config object is never instantiated, only the class is imported
-		into other modules to access class variables and methods. 
+		into other modules to access class variables and methods.
 
 	"""
 
@@ -242,12 +242,12 @@ class Config():
 			print('''"lyric_wikia", "musix_match", "lyricsmode" and "az_lyrics" are the only sources that can be enabled or disabled.''')
 			print('You attempted to change:', target)
 			print('use "lyrico --help" to view commands.')
-			return 
+			return
 
 		# User is updating valid action/source
 		bval = True if update_type == 'enable' else False
 		log_str = '' if update_type == 'enable' else 'not '
-		
+
 		setattr(Config, target, bval)
 		print(target, (update_type + 'd'))
 
@@ -268,7 +268,7 @@ class Config():
 
 	@staticmethod
 	def show_settings():
-		
+
 		print('Your current settings:\n')
 		# get list of section in config
 		for section in Config.conf.sections():

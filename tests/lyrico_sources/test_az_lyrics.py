@@ -10,5 +10,4 @@ class TestAzLyrics(unittest.TestCase):
         self.assertIsNone(song.error)
         self.assertIsNotNone(song.lyrics)
         self.assertEqual(song.lyrics[0:21], 'You could go anywhere')
-        self.assertEqual(song.lyrics[-21:], '\nand not make a sound')
-
+        self.assertEqual(song.lyrics[-21:], '\nAnd not make a sound')

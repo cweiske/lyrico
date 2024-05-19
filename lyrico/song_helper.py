@@ -208,7 +208,7 @@ def get_song_data(path):
 		album = get_key(tag, FORMAT_KEYS[song_format]['album'], song_format)
 		lyrics = get_key(tag, FORMAT_KEYS[song_format]['lyrics'], song_format)
 
-	# build wikia URL, filename and filepath
+	# build URL, filename and filepath
 	# If tag is not read or either of artist name or title is not preset
 	# those properties of the Song object would be intialized to None
 	if artist and title:

@@ -15,7 +15,6 @@ from mutagen import MutagenError
 from bs4 import BeautifulSoup
 
 # Import all the sources modules
-from .lyrico_sources.lyric_wikia import download_from_lyric_wikia
 from .lyrico_sources.az_lyrics import download_from_az_lyrics
 from .lyrico_sources.musix_match import download_from_musix_match
 from .lyrico_sources.lyricsmode import download_from_lyricsmode
@@ -105,10 +104,6 @@ class Song():
 		# At this point there is nothing in self.error
 		print('\nDownloading:', self.artist, '-', self.title)
 
-		# Use sources according to user settings
-		if Config.lyric_wikia:
-			download_from_lyric_wikia(self)
-
 		# Only try other sources if required
 
 		if not self.lyrics and Config.musix_match:
@@ -179,7 +174,7 @@ class Song():
 			try:
 				if self.format == 'mp3':
 					# encoding = 3 for UTF-8
-					self.tag.add(USLT(encoding=3, lang = u'eng', desc = u'lyrics.wikia',
+					self.tag.add(USLT(encoding=3, lang = u'eng',
 									text=self.lyrics))
 
 				if self.format == 'm4a' or self.format == 'mp4':
@@ -357,9 +352,6 @@ class Song():
 
 				# Add source key to log
 				f.write('\n\n\t**** SOURCE KEY  ****\n')
-
-				f.write("\t# 'WIKI' - Lyric Wikia")
-				f.write("\n")
 
 				f.write("\t# 'mXm' - musiXmatch")
 				f.write("\n")

@@ -74,7 +74,6 @@ def write_default_config(config_path):
 	config.set('paths', 'lyrics_dir', 'None')
 
 	config.add_section('sources')
-	config.set('sources', 'lyric_wikia', 'True')
 	config.set('sources', 'lyrics_n_music', 'True')
 	config.set('sources', 'musix_match', 'True')
 	config.set('sources', 'lyricsmode', 'True')

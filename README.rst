@@ -50,7 +50,6 @@ This would give the following output::
 
 
     SOURCES
-        lyric_wikia = True
         musix_match = True
         lyricsmode = True
         az_lyrics = False
@@ -182,13 +181,11 @@ Lyrics Sources
 ================
 ``lyrico`` uses the following sources from where it downloads the lyrics:
 
-1. `Lyric Wikia <http://lyrics.wikia.com/wiki/Lyrics_Wiki>`_ : ``lyric_wikia``
+1. `musiXmatch <https://www.musixmatch.com/>`_ : ``musix_match``
 
-2. `musiXmatch <https://www.musixmatch.com/>`_ : ``musix_match``
+2. `LYRICSMODE <http://www.lyricsmode.com/>`_ : ``lyricsmode``
 
-3. `LYRICSMODE <http://www.lyricsmode.com/>`_ : ``lyricsmode``
-
-4. `AZLyrics <http://www.azlyrics.com/>`_ : ``az_lyrics`` (**disabled by default**)
+3. `AZLyrics <http://www.azlyrics.com/>`_ : ``az_lyrics`` (**disabled by default**)
 
 The search order is same as enumerated above and cannot be changed. You can, however, disable or enable any of the sources using the same ``enable`` and ``disable`` commands. When a source is disabled, it is simply skipped during the search.
 
@@ -201,14 +198,14 @@ Use the command line name for the source, which is mentioned after the link to t
     az_lyrics enabled
     lyrico will use AZLyrics as a source for lyrics.
 
-Or to disable Lyric Wikia::
+Or to disable AZLyrics::
 
-    lyrico disable lyric_wikia:
+    lyrico disable az_lyrics:
 
 This logs the following message::
 
-    lyric_wikia disabled
-    lyrico will not use Lyric Wikia as a source for lyrics.
+    az_lyrics disabled
+    lyrico will not use AZLyrics as a source for lyrics.
 
 
 Audio Formats and Tags

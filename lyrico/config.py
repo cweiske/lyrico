@@ -30,7 +30,6 @@ LYRICO_ACTIONS = {
 	'save_to_tag': 'actions',
 	'overwrite': 'actions',
 
-	'lyric_wikia': 'sources',
 	'musix_match': 'sources',
 	'lyricsmode' : 'sources',
 	'az_lyrics': 'sources',
@@ -38,7 +37,6 @@ LYRICO_ACTIONS = {
 
 # Used to print commandline logging for enable/disable sources
 SOURCE_STR_MAP = {
-	'lyric_wikia' : 'Lyric Wikia',
 	'musix_match': 'musiXmatch',
 	'lyricsmode': 'LYRICSMODE',
 	'az_lyrics': 'AZLyrics',
@@ -99,8 +97,7 @@ class Config():
 			return False
 
 		# if user disables all sources. Notify & force user to enable one.
-		if (not Config.lyric_wikia
-		    and not Config.az_lyrics
+		if (not Config.az_lyrics
 		    and not Config.musix_match
 		    and not Config.lyricsmode):
 			print('All lyrics sources are disabled. Please enable one.')
@@ -133,7 +130,6 @@ class Config():
 			Config.overwrite = conf.getboolean('actions', 'overwrite')
 
 			# Load all the sources
-			Config.lyric_wikia = conf.getboolean('sources', 'lyric_wikia')
 			Config.musix_match = conf.getboolean('sources', 'musix_match')
 			Config.lyricsmode = conf.getboolean('sources', 'lyricsmode')
 			Config.az_lyrics = conf.getboolean('sources', 'az_lyrics')
@@ -162,7 +158,6 @@ class Config():
 			Config.setBool('actions', 'save_to_tag', Config.save_to_tag)
 
 			#sources
-			Config.setBool('sources', 'lyric_wikia', Config.lyric_wikia)
 			Config.setBool('sources', 'musix_match', Config.musix_match)
 			Config.setBool('sources', 'lyricsmode', Config.lyricsmode)
 			Config.setBool('sources', 'az_lyrics', Config.az_lyrics)
@@ -239,7 +234,7 @@ class Config():
 		if target not in LYRICO_ACTIONS:
 			print('Invalid lyrico action change attempted')
 			print('''"save_to_file", "save_to_tag" and "overwrite" are the only settings that can be enabled or disabled.''')
-			print('''"lyric_wikia", "musix_match", "lyricsmode" and "az_lyrics" are the only sources that can be enabled or disabled.''')
+			print('''"musix_match", "lyricsmode" and "az_lyrics" are the only sources that can be enabled or disabled.''')
 			print('You attempted to change:', target)
 			print('use "lyrico --help" to view commands.')
 			return

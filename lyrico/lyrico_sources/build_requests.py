@@ -21,13 +21,13 @@ request_headers = {
 	'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 	'Accept-Encoding': 'gzip, deflate',
 	'Accept-Language': 'en-GB,en-US;q=0.8,en;q=0.6',
-	'DNT': '1',	
+	'DNT': '1',
 }
 
 # randint inculdes both upper and lower bounds
 
 def get_lyrico_headers(site_name=None):
-	
+
 	# Since each module requesting from different souce uses the same
 	# request headers for a lyrico operation, make deep copies of base headers
 	# before giving it to modules.

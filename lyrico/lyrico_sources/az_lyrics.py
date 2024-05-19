@@ -43,18 +43,18 @@ AZLyrics_CORRECTION = {
 }
 
 def download_from_az_lyrics(song):
-	
+
 	"""
 		Takes reference to the song object as input and
 		adds lyrics to self.lyrics or add error string to self.error
-		property of the song object. 
+		property of the song object.
 	"""
 
 
 	# temp var to hold value for final checking
 	lyrics = None
 
-	# Assume this won't work. Be a realist. 
+	# Assume this won't work. Be a realist.
 	error = 'Lyrics not found. Check artist or title name.'
 
 	artist = song.artist
@@ -68,10 +68,10 @@ def download_from_az_lyrics(song):
 	if match_the:
 		# Remove 'The '
 	    artist = artist[4:]
-	
+
 
 	# Convert artist and title to lower case and strip off any
-	# non-alphanumeric characters and '_'. '\W' Equivalent to set [^a-zA-Z0-9_] 
+	# non-alphanumeric characters and '_'. '\W' Equivalent to set [^a-zA-Z0-9_]
 	# Make regex Unicode UNAWARE
 	if sys.version_info[0] < 3:
 		# Python27
@@ -107,13 +107,13 @@ def download_from_az_lyrics(song):
 	except HTTPError:
 		# Already carrying error string
 		pass
-	
-	# No exceptions raised and the HTML for lyrics was downloaded		
+
+	# No exceptions raised and the HTML for lyrics was downloaded
 	else:
 		soup = BeautifulSoup(res.text, 'html.parser')
 		lyric_tag = soup.find('div', class_=None, id=None)
 		lyrics = lyric_tag.get_text().strip()
-			    
+
 	# Final check
 	if test_lyrics(lyrics):
 		song.lyrics = lyrics

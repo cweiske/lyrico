@@ -96,7 +96,7 @@ def download_from_musix_match(song):
 		lyric_jsons = soup.find_all(type='application/json')
 		for jsonTag in lyric_jsons:
 			lyric_json = json.loads(jsonTag.get_text())
-			lyric_text += lyric_json.get('props').get('pageProps').get('data').get('trackInfo').get('data').get('lyrics').get('body').strip() + "\n"
+			lyric_text += lyric_json.get('props', {}).get('pageProps', {}).get('data', {}).get('trackInfo', {}).get('data', {}).get('lyrics', {}).get('body', '').strip() + "\n"
 
 		lyrics = lyric_text if lyric_text else None
 

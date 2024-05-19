@@ -52,6 +52,10 @@ def download_from_musix_match(song):
 	artist = song.artist.replace("'", '-')
 	title = song.title.replace("'", '-')
 
+	# some special characters found in songs
+	title = title.replace('‐', '-')
+	title = title.replace('’', '-')
+
 	# This regex mathches anything other than Alphanumeric, spaces and dashes
 	# and removes them.
 	# Make regex unicode aware 're.UNICODE' for Python27. It is redundant for Python3.

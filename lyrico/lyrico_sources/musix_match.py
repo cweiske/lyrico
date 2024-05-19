@@ -14,6 +14,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import json
 import re
 import sys
 import requests
@@ -87,12 +88,13 @@ def download_from_musix_match(song):
 	else:
 		soup = BeautifulSoup(res.text, 'html.parser')
 
-		# For musixmatch, lyrics are in <span class="lyrics__content__ok">
-		lyric_html = ""
-		lyric_tags = soup.find_all('span','lyrics__content__ok')
-		for tag in lyric_tags:
-			lyric_html += tag.get_text().strip() + "\n"
-		lyrics = lyric_html if lyric_html else None
+		lyric_text = ""
+		lyric_jsons = soup.find_all(type='application/json')
+		for jsonTag in lyric_jsons:
+			lyric_json = json.loads(jsonTag.get_text())
+			lyric_text += lyric_json.get('props').get('pageProps').get('data').get('trackInfo').get('data').get('lyrics').get('body').strip() + "\n"
+
+		lyrics = lyric_text if lyric_text else None
 
 	# Final check
 	if test_lyrics(lyrics):

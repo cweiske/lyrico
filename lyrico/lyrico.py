@@ -41,7 +41,7 @@ def main():
 	args = docopt(__doc__, version = ('lyrico ' + __version__))
 
 	Config.load_config()
-	
+
 	if args['--settings']:
 		# show current settings
 		Config.show_settings()
@@ -94,7 +94,7 @@ def main():
 	#settings changes are done, we need a valid config now
 	if not Config.check():
 		return
-				
+
 	song_list = [Song(song_path) for song_path in get_song_list(Config.source_dir)]
 	print(len(song_list), 'songs detected.')
 	print('Metadata extracted for', (str(Song.valid_metadata_count) + '/' + str(len(song_list))), 'songs.')
@@ -126,7 +126,7 @@ def main():
 		)
 	)
 	print('FINISHED')
-		
+
 	# Disable windows unicode console anyways
 	if platform.system() == 'Windows':
 		win_unicode_console.disable()

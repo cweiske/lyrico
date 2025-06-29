@@ -313,8 +313,22 @@ Run them:
 
 Changelog
 ==========
-- 0.6.0 Added support for ``oga`` audio format. Detect uppercase extensions in Linux.
-- 0.5.0 Added musiXmatch and LYRICSMODE to sources. Include detection for licensing errors.
+- 0.7.0 2024-05
+
+  - python3 compatibility
+  - store configuration in correct folder depending on operating system
+  - remove LYRICSnMUSIC (service shutdown)
+  - remove LyricsWikia (service shutdown)
+  - fixes for Musixmatch
+  - fixes for AZLyrics
+- 0.6.0 2016-08
+
+  - Added support for ``oga`` audio format.
+  - Detect uppercase extensions in Linux.
+- 0.5.0 2016-02
+
+  - Added musiXmatch and LYRICSMODE to sources.
+  - Include detection for licensing errors.
 - 0.4.0 Added LYRICSnMUSIC and AZLyrics as sources. Expanded the command line interface to control sources. Added `requests <https://pypi.python.org/pypi/requests>`_ to dependencies.
 - 0.3.0 Added support for ``ogg`` and ``wma`` audio formats. Replaced ``UNSYNCED LYRICS`` with ``LYRICS`` tags to embed lyrics in Vorbis Comments.
 - 0.2.0 Added documentation and tutorial.

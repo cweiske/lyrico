@@ -27,8 +27,8 @@ from .song import Song
 from .song_helper import get_song_list
 from .config import Config
 
-# testpypi 0.6.0
-__version__ = "0.6.0"
+# testpypi 0.7.0
+__version__ = "0.7.0"
 
 
 def main():

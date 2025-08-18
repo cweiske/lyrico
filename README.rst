@@ -307,9 +307,14 @@ I personally use it at one or two albums at time and keep checking for any error
 
 Integration tests
 =================
-Run them:
+Run them::
 
-    $ python -m unittest discover
+    $ python3 -m unittest discover
+
+Run a single test::
+
+    $ python3 -m unittest tests/lyrico_sources/test_musix_match.py -k test_download
+
 
 Changelog
 ==========

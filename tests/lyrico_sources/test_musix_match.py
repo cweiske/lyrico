@@ -11,3 +11,9 @@ class TestMusixMatch(unittest.TestCase):
 		self.assertIsNotNone(song.lyrics)
 		self.assertEqual(song.lyrics[0:21], 'Immer wenn ich tiefer')
 		self.assertEqual(song.lyrics[-12:], ', unendlich\n')
+
+
+	def test_download_from_musix_match_eminem_unauthorized(self):
+		song = DummySong('Eminem', 'The Real Slim Shady')
+		download_from_musix_match(song)
+		self.assertEqual(song.error, 'Musixmatch may not show the lyrics')

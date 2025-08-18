@@ -21,6 +21,7 @@ except ImportError:
 from mutagen.id3 import ID3
 from mutagen.mp4 import MP4
 from mutagen.flac import FLAC
+from mutagen.oggopus import OggOpus
 from mutagen.oggvorbis import OggVorbis
 from mutagen.oggflac import OggFLAC
 from mutagen.asf import ASF
@@ -85,7 +86,7 @@ def get_key(tag, key, format):
 			# Python3 is able to handle it internally due to implicit encoding(?)
 			data = tag.get(key)
 
-		if format == 'flac' or format == 'ogg' or format == 'oga':
+		if format == 'flac' or format == 'ogg' or format == 'oga' or format == 'opus':
 
 			if key == FORMAT_KEYS[format]['lyrics']:
 
@@ -190,6 +191,8 @@ def get_song_data(path):
 			tag = MP4(path)
 		if song_format == 'flac':
 			tag = FLAC(path)
+		if song_format == 'opus':
+			tag = OggOpus(path)
 		if song_format == 'wma':
 			tag = ASF(path)
 		if song_format == 'ogg' or song_format == 'oga':

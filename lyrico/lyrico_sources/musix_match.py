@@ -74,6 +74,7 @@ def download_from_musix_match(song):
 		title = title.encode('utf-8')
 
 	mxm_url = 'https://www.musixmatch.com/lyrics/%s/%s' % (quote(artist), quote(title))
+	mxm_url = mxm_url.replace('--', '-')
 
 	try:
 		print('\tTrying musixmatch:', mxm_url)

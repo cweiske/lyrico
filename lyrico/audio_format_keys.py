@@ -25,7 +25,7 @@ MP4_KEYS = {
 
 
 FORMAT_KEYS = {
-	
+
 	#ID3 TAGS
 	'mp3': {
 		'artist': 'TPE1',
@@ -48,5 +48,3 @@ FORMAT_KEYS = {
 		'lyrics':'WM/Lyrics'
 	}
 }
-
-

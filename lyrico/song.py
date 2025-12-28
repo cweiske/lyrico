@@ -97,8 +97,8 @@ class Song():
 
 		if not self.download_required():
 			Song.lyrics_existing_count += 1
-			print('\nSkipping', self.artist, '-', self.title)
-			print('Lyrics already present.')
+			print('\nSkipping:', self.artist, '-', self.title)
+			print('\tLyrics already present.')
 			return
 
 		# At this point there is nothing in self.error
@@ -147,7 +147,7 @@ class Song():
 
 		if not self.lyrics:
 			Song.lyrics_errors_count += 1
-			print('Failed:', self.error)
+			print('\tFailed:', self.error)
 			return
 
 		if self.lyrics and Config.save_to_file:

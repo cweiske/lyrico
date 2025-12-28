@@ -86,8 +86,9 @@ def download_from_musix_match(song, artist, title):
 	except (ConnectionError, Timeout) as e:
 		song.error = 'No network connectivity.'
 	except HTTPError as e:
-		print(e)
-		song.error = 'Lyrics not found. Check artist or title name.'
+		if e.response.status_code != 404:
+			print(e)
+			song.error = 'Lyrics not found. Check artist or title name.'
 
 	# No exceptions raised and the HTML for lyrics page was fetched
 	else:

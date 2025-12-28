@@ -117,6 +117,9 @@ class Song():
 		#"Title (Cool Version)" -> "Title"
 		if self.title.endswith((" version)", " Version)")):
 		    variants += [[self.artist, re.sub(r'\([^)]+ersion\)$', '', self.title)]]
+		#"$" may mean "s"
+		if self.title.find('$') != -1:
+			variants += [[self.artist, self.title.replace('$', 's')]]
 
 		# Only try other sources if required
 		for variant in variants:

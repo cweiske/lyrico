@@ -36,7 +36,7 @@ from .lyrics_helper import test_lyrics
 request_headers = get_lyrico_headers()
 
 
-def download_from_musix_match(song):
+def download_from_musix_match(song, artist, title):
 
 	"""
 		Takes reference to the song object as input and
@@ -49,8 +49,8 @@ def download_from_musix_match(song):
 	lyrics = None
 
 	# Replace upper(apostrophe) commas with dashes '-'
-	artist = song.artist.replace("'", '-')
-	title = song.title.replace("'", '-')
+	artist = artist.replace("'", '-')
+	title = title.replace("'", '-')
 
 	# some special characters found in songs
 	title = title.replace('‐', '-')

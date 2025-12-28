@@ -104,16 +104,33 @@ class Song():
 		# At this point there is nothing in self.error
 		print('\nDownloading:', self.artist, '-', self.title)
 
+		# calculate title variants to try
+		variants = [
+			[self.artist, self.title]
+		]
+		#"Title Explicit" -> "Title"
+		if self.title.endswith(' Explicit'):
+			variants += [[self.artist, self.title.removesuffix(' Explicit')]]
+		#"Title explicit" -> "Title"
+		if self.title.endswith(' explicit'):
+			variants += [[self.artist, self.title.removesuffix(' explicit')]]
+		#"Title (Cool Version)" -> "Title"
+		if self.title.endswith((" version)", " Version)")):
+		    variants += [[self.artist, re.sub(r'\([^)]+ersion\)$', '', self.title)]]
+
 		# Only try other sources if required
+		for variant in variants:
+			artist = variant[0]
+			title = variant[1]
 
-		if not self.lyrics and Config.musix_match:
-			download_from_musix_match(self)
+			if not self.lyrics and Config.musix_match:
+				download_from_musix_match(self, artist, title)
 
-		if not self.lyrics and Config.lyricsmode:
-			download_from_lyricsmode(self)
+			if not self.lyrics and Config.lyricsmode:
+				download_from_lyricsmode(self, artist, title)
 
-		if not self.lyrics and Config.az_lyrics:
-			download_from_az_lyrics(self)
+			if not self.lyrics and Config.az_lyrics:
+				download_from_az_lyrics(self, artist, title)
 
 		self.save_lyrics()
 

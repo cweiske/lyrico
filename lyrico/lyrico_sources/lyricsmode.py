@@ -8,7 +8,7 @@
 
 	LYRICSMODE only uses non-alphanumeric ascii in it its urls. It replaces spaces with
 	underscores. It removes every non-alphanumeric except '-' from artist names.
-	
+
 	LYRICSMODE also replaces some accented characters in artist with non-accented.
 	Uses correction mapping for known exception to artist names.
 """
@@ -47,12 +47,12 @@ LYRICSMODE_CORRECTION = {
 	'yo': 'y'
 }
 
-def download_from_lyricsmode(song=None):
-	
+def download_from_lyricsmode(song, artist, title):
+
 	"""
 		Takes reference to the song object as input and
 		adds lyrics to self.lyrics or add error string to self.error
-		property of the song object. 
+		property of the song object.
 	"""
 
 
@@ -63,10 +63,10 @@ def download_from_lyricsmode(song=None):
 	regex_non_alphanumeric = re.compile(r'[^a-z0-9\s\-]+')
 
 	# Replace accented characters by non-accented before parsing regex
-	artist = regex_non_alphanumeric.sub('', remove_accents(song.artist).lower())
-	title = regex_non_alphanumeric.sub('', song.title.lower())
+	artist = regex_non_alphanumeric.sub('', remove_accents(artist).lower())
+	title = regex_non_alphanumeric.sub('', title.lower())
 
-	# Match multiple spaces or dashes and replace them by underscores 
+	# Match multiple spaces or dashes and replace them by underscores
 	regex_underscores = re.compile(r'[\s|\-]+')
 	artist = regex_underscores.sub('_', artist)
 	title = regex_underscores.sub('_', title)
@@ -86,14 +86,14 @@ def download_from_lyricsmode(song=None):
 
 		res = requests.get(lyricsmode_url, headers = request_headers)
 		res.raise_for_status()
-		
+
 	# Catch network errors
 	except (ConnectionError, Timeout):
 		song.error = 'No network connectivity.'
 	except HTTPError as e:
 		song.error = 'Lyrics not found. Check artist or title name.'
-	
-	# No exceptions raised and the HTML for lyrics page was fetched		
+
+	# No exceptions raised and the HTML for lyrics page was fetched
 	else:
 		soup = BeautifulSoup(res.text, 'html.parser')
 

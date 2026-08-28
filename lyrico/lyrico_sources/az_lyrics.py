@@ -110,9 +110,12 @@ def download_from_az_lyrics(song):
 
 	# No exceptions raised and the HTML for lyrics was downloaded
 	else:
-		soup = BeautifulSoup(res.text, 'html.parser')
-		lyric_tag = soup.find('div', class_=None, id=None)
-		lyrics = lyric_tag.get_text().strip()
+		if 'az_unblock_container' in res.text:
+			error = 'Temporarily blocked'
+		else:
+			soup = BeautifulSoup(res.text, 'html.parser')
+			lyric_tag = soup.find('div', class_=None, id=None)
+			lyrics = lyric_tag.get_text().strip()
 
 	# Final check
 	if test_lyrics(lyrics):

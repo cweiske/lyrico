@@ -10,7 +10,7 @@ from __future__ import unicode_literals
 import sys
 import re
 import os
-from appdirs import *
+from platformdirs import user_config_dir
 
 
 class BadConfigError(Exception):

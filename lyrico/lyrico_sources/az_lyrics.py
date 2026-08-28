@@ -76,10 +76,10 @@ def download_from_az_lyrics(song):
 	if sys.version_info[0] < 3:
 		# Python27
 		# By default ignores Unicode.
-	    regex_url = re.compile('[\W_]+')
+	    regex_url = re.compile(r'[\W_]+')
 	else:
 		# Use re.ASCII flag to extract ASCII characters only
-	    regex_url = re.compile('[\W_]+', re.ASCII)
+	    regex_url = re.compile(r'[\W_]+', re.ASCII)
 
 	artist = regex_url.sub('', artist.lower())
 	title = regex_url.sub('', title.lower())

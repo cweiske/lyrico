@@ -6,7 +6,7 @@ class TestMusixMatch(unittest.TestCase):
 
 	def test_download_from_musix_match(self):
 		song = DummySong('Sarah Connor', 'Unendlich')
-		download_from_musix_match(song)
+		download_from_musix_match(song, song.artist, song.title)
 		self.assertIsNone(song.error)
 		self.assertIsNotNone(song.lyrics)
 		self.assertEqual(song.lyrics[0:21], 'Immer wenn ich tiefer')
@@ -14,7 +14,7 @@ class TestMusixMatch(unittest.TestCase):
 
 	def test_download_from_musix_match_single_quote_end_of_word(self):
 		song = DummySong('Ronan Keating', "Lovin' Each Day")
-		download_from_musix_match(song)
+		download_from_musix_match(song, song.artist, song.title)
 		self.assertIsNone(song.error)
 		self.assertIsNotNone(song.lyrics)
 		self.assertEqual(song.lyrics[0:15], 'Ah c′mon, yeah\n')
@@ -22,5 +22,5 @@ class TestMusixMatch(unittest.TestCase):
 
 	def test_download_from_musix_match_eminem_unauthorized(self):
 		song = DummySong('Eminem', 'The Real Slim Shady')
-		download_from_musix_match(song)
+		download_from_musix_match(song, song.artist, song.title)
 		self.assertEqual(song.error, 'Musixmatch may not show the lyrics')

@@ -9,7 +9,7 @@ from __future__ import unicode_literals
 
 import sys
 import os
-import glob2
+import glob
 import platform
 
 try:
@@ -264,13 +264,13 @@ def get_song_list(path):
 		pattern = '**/*.' + ext
 		pattern_uppercase = '**/*.' + ext.upper()
 
-		song_list.extend(glob2.glob(os.path.join(path, pattern)))
+		song_list.extend(glob.glob(os.path.join(path, pattern), recursive=True))
 
-		# Windows is case-insensitive towards extensions. So the glob2 module detects
+		# Windows is case-insensitive towards extensions. So the glob module detects
 		# ex. .ogg and .OGG as well. But in Linux the extensions are case-sensitive.
 
 		# Add detection for uppercase extensions
 		if platform.system() == 'Linux':
-			song_list.extend(glob2.glob(os.path.join(path, pattern_uppercase)))
+			song_list.extend(glob.glob(os.path.join(path, pattern_uppercase), recursive=True))
 
 	return song_list

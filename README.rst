@@ -282,8 +282,6 @@ Dependencies
 ================
 ``lyrico`` uses and thanks the following python packages:
 
-- `glob2 <https://pypi.python.org/pypi/glob2>`_: to allow simple recursive directory search in Python 27.
-
 - `requests <https://pypi.python.org/pypi/requests>`_: HTTP for Humans.
 
 - `mutagen <https://pypi.python.org/pypi/mutagen>`_: to read tags from audio files and embed lyrics in tags for multiple audio formats.
@@ -291,7 +289,6 @@ Dependencies
 - `beautifulsoup4 <https://pypi.python.org/pypi/beautifulsoup4>`_: to extract the lyrics.
 
 - `win_unicode_console <https://pypi.python.org/pypi/win_unicode_console>`_: because Python 27, Unicode and command prompt is a nightmare.
-
 
 - `docopt <https://pypi.python.org/pypi/docopt>`_: to create beautiful command-line interfaces.
 

@@ -5,7 +5,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import os
-import glob2
+import glob
 
 
 try:
@@ -58,7 +58,7 @@ class Config():
 
 	# Audio formats supported are not loaded from config.ini
 
-	# This list is used by the 'glob2' module to scan 'source_dir' for audio files.
+	# This list is used by the 'glob' module to scan 'source_dir' for audio files.
 	audio_formats = ['mp3', 'flac', 'm4a', 'mp4', 'ogg', 'oga', 'opus', 'wma']
 
 	lyrics_dir = None
@@ -135,7 +135,7 @@ class Config():
 			Config.az_lyrics = conf.getboolean('sources', 'az_lyrics')
 
 			# Loading this with user config, we need to call the load_config only once at start.
-			Config.lyric_files_in_dir = glob2.glob(os.path.join(Config.lyrics_dir, '**/*.txt'))
+			Config.lyric_files_in_dir = glob.glob(os.path.join(Config.lyrics_dir, '**/*.txt'), recursive=True)
 
 
 		# Catch file handling errors

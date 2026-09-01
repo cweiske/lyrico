@@ -52,13 +52,7 @@ def sanitize_data(s):
 
 def write_default_config(config_path):
 	# Import ConfigParser
-	try:
-		# >3.2
-		from configparser import ConfigParser
-	except ImportError:
-		# python27
-		# Refer to the older SafeConfigParser as ConfigParser
-		from ConfigParser import SafeConfigParser as ConfigParser
+	from configparser import ConfigParser
 
 	# Load lyrico.ini
 	config = ConfigParser()

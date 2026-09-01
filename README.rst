@@ -15,7 +15,7 @@ Support
 
 - **Audio Formats** - mp3, flac, m4a, mp4, opus, wma, ogg/oga (Vorbis and FLAC).
 
-- **Python** - Python 27 and Python 3 (tested on Python 3.5 Python 3.4)
+- **Python** - Python 3 (tested on Python 3.5 Python 3.4)
 
 - **OS** - Windows, Linux (tested on Ubuntu).
 
@@ -287,8 +287,6 @@ Dependencies
 - `mutagen <https://pypi.python.org/pypi/mutagen>`_: to read tags from audio files and embed lyrics in tags for multiple audio formats.
 
 - `beautifulsoup4 <https://pypi.python.org/pypi/beautifulsoup4>`_: to extract the lyrics.
-
-- `win_unicode_console <https://pypi.python.org/pypi/win_unicode_console>`_: because Python 27, Unicode and command prompt is a nightmare.
 
 - `docopt <https://pypi.python.org/pypi/docopt>`_: to create beautiful command-line interfaces.
 

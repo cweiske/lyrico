@@ -73,13 +73,8 @@ def download_from_az_lyrics(song):
 	# Convert artist and title to lower case and strip off any
 	# non-alphanumeric characters and '_'. '\W' Equivalent to set [^a-zA-Z0-9_]
 	# Make regex Unicode UNAWARE
-	if sys.version_info[0] < 3:
-		# Python27
-		# By default ignores Unicode.
-	    regex_url = re.compile(r'[\W_]+')
-	else:
-		# Use re.ASCII flag to extract ASCII characters only
-	    regex_url = re.compile(r'[\W_]+', re.ASCII)
+	# Use re.ASCII flag to extract ASCII characters only
+	regex_url = re.compile(r'[\W_]+', re.ASCII)
 
 	artist = regex_url.sub('', artist.lower())
 	title = regex_url.sub('', title.lower())

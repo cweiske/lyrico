@@ -20,11 +20,7 @@ import re
 import string
 import requests
 
-try:
-	from string  import ascii_lowercase as LOWERCASE_CHARS
-except ImportError:
-	# Python27
-	from string  import lowercase as LOWERCASE_CHARS
+from string  import ascii_lowercase as LOWERCASE_CHARS
 
 from requests import ConnectionError, HTTPError, Timeout
 from bs4 import BeautifulSoup

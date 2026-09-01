@@ -33,11 +33,6 @@ __version__ = "0.7.0"
 
 def main():
 
-	# Fix console for windows users
-	if platform.system() == 'Windows':
-		import win_unicode_console
-		win_unicode_console.enable()
-
 	args = docopt(__doc__, version = ('lyrico ' + __version__))
 
 	Config.load_config()

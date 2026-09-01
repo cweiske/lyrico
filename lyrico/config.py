@@ -8,16 +8,8 @@ import os
 import glob
 
 
-try:
-	# Import the base class for all configparser errors as BaseConfigParserError
-	# >3.2
-	from configparser import ConfigParser
-	from configparser import Error as BaseConfigParserError
-except ImportError:
-	# python27
-	# Refer to the older SafeConfigParser as ConfigParser
-	from ConfigParser import SafeConfigParser as ConfigParser
-	from ConfigParser import Error as BaseConfigParserError
+from configparser import ConfigParser
+from configparser import Error as BaseConfigParserError
 
 from .helper import get_config_path
 from .helper import BadConfigError

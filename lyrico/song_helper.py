@@ -12,11 +12,7 @@ import os
 import glob
 import platform
 
-try:
-	from urllib.parse  import quote
-except ImportError:
-	# Python27
-	from urllib import quote
+from urllib.parse  import quote
 
 from mutagen.id3 import ID3
 from mutagen.mp4 import MP4
@@ -75,14 +71,7 @@ def get_key(tag, key, format):
 
 		if format == 'm4a' or format == 'mp4':
 
-			# For python27 encoding key(which is a unicode object due to futures import)
-			# to 'latin-1' fixes the fetch from dictionary
-
 			# mp4 standard uses latin-1 encoding for these tag names.
-			# \xa9 is copyright symbol in that encoding.
-			if sys.version_info[0] < 3:
-				key = key.encode('latin-1')
-
 			# Python3 is able to handle it internally due to implicit encoding(?)
 			data = tag.get(key)
 

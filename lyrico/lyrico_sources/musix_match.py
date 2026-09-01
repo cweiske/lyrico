@@ -19,11 +19,7 @@ import re
 import sys
 import requests
 
-try:
-	from urllib.parse  import quote
-except ImportError:
-	# Python27
-	from urllib import quote
+from urllib.parse  import quote
 
 from requests import ConnectionError, HTTPError, Timeout
 from bs4 import BeautifulSoup
@@ -58,7 +54,6 @@ def download_from_musix_match(song, artist, title):
 
 	# This regex mathches anything other than Alphanumeric, spaces and dashes
 	# and removes them.
-	# Make regex unicode aware 're.UNICODE' for Python27. It is redundant for Python3.
 	regex_non_alphanum = re.compile(r'[^\w\s\-]*', re.UNICODE)
 	artist = regex_non_alphanum.sub('', artist)
 	title = regex_non_alphanum.sub('', title)

@@ -23,13 +23,6 @@ from .song_helper import get_song_data, get_song_list
 from .config import Config
 from .audio_format_keys import FORMAT_KEYS
 
-# If we are using python27, import codec module and replace native 'open'
-# with 'codec.open' to write unicode strings to file.
-
-if sys.version_info[0] < 3:
-    import codecs
-    open = codecs.open
-
 
 class Song():
 	"""Container objects repersenting each song globbed from source_dir"""

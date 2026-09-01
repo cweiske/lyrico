@@ -21,7 +21,7 @@ version = re.search(
 # http://rst.ninjs.org/?n=86de1f4d5843b454098745d4a6026376&theme=basic
 with open("README.rst", "rb") as f:
     long_descr = f.read().decode("utf-8")
-    
+
 
 # Install dependencies from requirements.txt (install_requires is not working)
 # With requirements.txt, win-unicode-console will only be installed for Windows users.
